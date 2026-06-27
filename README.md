@@ -1,18 +1,16 @@
 # @stillpointlab/md-editor
 
-A [ProseMirror](https://prosemirror.net/)-based **markdown editor web component**
-(`<md-editor>`) plus an isomorphic **markdown renderer**. Written in TypeScript,
-shipped as ESM + CJS with type declarations, and usable from plain JavaScript or
-TypeScript with no build-time CSS imports (styles are injected into the
-component's shadow root at runtime).
+=======
 
-- **`<md-editor>`** — a WYSIWYG markdown editor custom element (toolbar, lists,
-  tables, code blocks, a raw-markdown toggle), with ProseMirror loaded lazily.
-- **`@stillpointlab/md-editor/markdown`** — a DOM-free `createMarkdownIt` /
-  `renderMarkdown` (CommonMark + GFM strikethrough + tables) for Node SSR or the
-  browser.
-- **Plugin interface** — host-specific syntax (e.g. citations) plugs in without
-  forking the editor.
+TEST TEST !!!!!!!
+
+=======
+
+A [ProseMirror](https://prosemirror.net/)-based **markdown editor web component** (`<md-editor>`) plus an isomorphic **markdown renderer**. Written in TypeScript, shipped as ESM + CJS with type declarations, and usable from plain JavaScript or TypeScript with no build-time CSS imports (styles are injected into the component's shadow root at runtime).
+
+* **`<md-editor>`** — a WYSIWYG markdown editor custom element (toolbar, lists, tables, code blocks, a raw-markdown toggle), with ProseMirror loaded lazily.
+* **`@stillpointlab/md-editor/markdown`** — a DOM-free `createMarkdownIt` / `renderMarkdown` (CommonMark + GFM strikethrough + tables) for Node SSR or the browser.
+* **Plugin interface** — host-specific syntax (e.g. citations) plugs in without forking the editor.
 
 ## Install
 
@@ -20,8 +18,7 @@ component's shadow root at runtime).
 npm install @stillpointlab/md-editor
 ```
 
-Peer runtime deps (`markdown-it`, `prosemirror-*`) are declared as regular
-dependencies and installed automatically.
+Peer runtime deps (`markdown-it`, `prosemirror-*`) are declared as regular dependencies and installed automatically.
 
 ## Usage
 
@@ -49,12 +46,12 @@ Or in HTML:
 
 **Element API**
 
-| Member                          | Description                                       |
-| ------------------------------- | ------------------------------------------------- |
-| `setContent(markdown: string)`  | Replace the document with parsed markdown.        |
-| `getContent(): string`          | Serialize the current document to markdown.       |
-| `readonly` attribute (`"true"`) | Render the editor read-only.                      |
-| `content-change` event          | Fired on edits; `detail.content` is the markdown. |
+| Member | Description |
+| --- | --- |
+| `setContent(markdown: string)` | Replace the document with parsed markdown. |
+| `getContent(): string` | Serialize the current document to markdown. |
+| `readonly` attribute (`"true"`) | Render the editor read-only. |
+| `content-change` event | Fired on edits; `detail.content` is the markdown. |
 
 ### Rendering markdown (no DOM required)
 
@@ -78,16 +75,11 @@ const md = createMarkdownIt({
 const html = md.render('**hi**');
 ```
 
-> ⚠️ **Sanitization is the caller's responsibility.** `renderMarkdown` returns
-> raw HTML. Run it through a sanitizer (e.g. DOMPurify) before inserting it into
-> the page.
+> ⚠️ **Sanitization is the caller's responsibility.** `renderMarkdown` returns raw HTML. Run it through a sanitizer (e.g. DOMPurify) before inserting it into the page.
 
 ## Extending: the plugin interface
 
-Host-specific features are added through a `MarkdownEditorPlugin`, registered
-**before** the element initializes. A plugin can contribute a markdown-it plugin,
-ProseMirror schema nodes, a markdown-it-token → node parse mapping, a
-node → markdown serializer, and an `onReady` hook.
+Host-specific features are added through a `MarkdownEditorPlugin`, registered **before** the element initializes. A plugin can contribute a markdown-it plugin, ProseMirror schema nodes, a markdown-it-token → node parse mapping, a node → markdown serializer, and an `onReady` hook.
 
 ```ts
 import { registerEditorPlugin, type MarkdownEditorPlugin } from '@stillpointlab/md-editor';
@@ -130,17 +122,16 @@ setReporter((message, context) => myLogger.info(message, context));
 
 From `@stillpointlab/md-editor`:
 
-- `ProseMirrorEditor` — the element class (also registered as `<md-editor>`)
-- `registerEditorPlugin`, `getEditorPlugins`
-- `setErrorHandler`, `setReporter`
-- `createSchema`, `getSchema`, `getMarkdownParser`, `getMarkdownSerializer`,
-  `buildTableNode`
-- types: `MarkdownEditorPlugin`, `MarkdownNodeSerializer`
+* `ProseMirrorEditor` — the element class (also registered as `<md-editor>`)
+* `registerEditorPlugin`, `getEditorPlugins`
+* `setErrorHandler`, `setReporter`
+* `createSchema`, `getSchema`, `getMarkdownParser`, `getMarkdownSerializer`, `buildTableNode`
+* types: `MarkdownEditorPlugin`, `MarkdownNodeSerializer`
 
 From `@stillpointlab/md-editor/markdown`:
 
-- `createMarkdownIt`, `getMarkdownIt`, `renderMarkdown`
-- types: `MarkdownIt`, `MarkdownItPlugin`, `CreateMarkdownItOptions`
+* `createMarkdownIt`, `getMarkdownIt`, `renderMarkdown`
+* types: `MarkdownIt`, `MarkdownItPlugin`, `CreateMarkdownItOptions`
 
 ## Development
 
@@ -153,9 +144,7 @@ npm run lint
 npm run build      # tsup → dist/ (ESM + CJS + .d.ts)
 ```
 
-The editor's SCSS is compiled to a CSS string (`npm run gen:styles`, run
-automatically by build/dev/test) and injected into the shadow root, so consumers
-never import CSS.
+The editor's SCSS is compiled to a CSS string (`npm run gen:styles`, run automatically by build/dev/test) and injected into the shadow root, so consumers never import CSS.
 
 ## License
 
