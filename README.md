@@ -1,3 +1,5 @@
+> **Archived 2026-11-01.** This package now lives in [stillpointlab/surfaces](https://github.com/stillpointlab/surfaces) as `packages/formats/md` (`@stillpointlab/md-format`), with this history preserved. Context Manager mounts that repository as one submodule (ADR-0035).
+
 # @stillpointlab/md-editor
 
 A [ProseMirror](https://prosemirror.net/)-based **markdown editor web component**
